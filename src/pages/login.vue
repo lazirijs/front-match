@@ -6,7 +6,7 @@
       <br> -->
       <input-app :value="password" @update="password = $event" icon="ph:password-bold" type="password" placeholder="password" :readonly="loading"/>
       <h6 class="text-gray-400 text-start mt-2">enter your password here</h6>
-      <btn-app @click="login" class="hidden" />
+      <button @click="create()" class="hidden"/>
     </form>
     <btn-app text="enter" @click="login" icon="basil:login-solid" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
     <h6 class="w-8/12 m-auto text-gray-400">you have to login again each time you reload the page</h6>
