@@ -8,4 +8,4 @@
 defineProps({
   msg: String
 });
-</script>
+</script>4
