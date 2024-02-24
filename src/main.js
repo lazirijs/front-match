@@ -8,9 +8,13 @@ import { Icon } from "@iconify/vue";
 import input from "./components/utilities/input.vue";
 import button from "./components/utilities/button.vue";
 
-createApp(App)
+import { toDate } from './utilities/date';
 
-.use(store).use(router)
+const app = createApp(App)
+
+app.config.globalProperties.$toDate = (e, type) => toDate(e, type);
+
+app.use(store).use(router)
 
 .component("btn-app", button)
 .component("input-app", input)

@@ -6,8 +6,8 @@
       <input-app :value="channel.name" @update="channel.name = $event" icon="ic:round-tv" placeholder="channel name" :readonly="loading" />
       <input-app :value="channel.category" @update="channel.category = $event" icon="tabler:category-2" placeholder="channel category" :readonly="loading" />
       <div class="space-y-2 overflow-y-auto">
-        <input-app v-for="(item, index) in channel.resposible" :key="index" :value="channel.resposible[index]" @update="channel.resposible[index] = $event" icon="fluent:person-24-filled" placeholder="channel resposible" :readonly="loading" />
-        <h6 class="text-gray-400 text-start first-letter:lowercase px-2"><a @click="channel.resposible.push('')" class="underline">click here</a> to add another responsible</h6>
+        <input-app v-for="(item, index) in channel.responsible" :key="index" :value="channel.responsible[index]" @update="channel.responsible[index] = $event" icon="fluent:person-24-filled" placeholder="channel responsible" :readonly="loading" />
+        <h6 class="text-gray-400 text-start first-letter:lowercase px-2"><a @click="channel.responsible.push('')" class="underline">click here</a> to add another responsible</h6>
       </div>
       <div class="space-y-2">
         <div class="grid grid-cols-4 gap-4">
@@ -33,13 +33,17 @@
 <script setup>
 // @ is an alias to /src
 import { ref } from 'vue'
+import { api } from '@/plugins/axios.js';
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const loading = ref(false);
 
 const channel = ref({
   name: '',
   category: '',
-  resposible: [''],
+  responsible: [''],
   languages: {
     ar: false,
     amz: false,
@@ -49,6 +53,22 @@ const channel = ref({
 });
 
 const create = async () => {
-  alert(channel.value.name);
-};
+  try {
+    if (channel.value.name && channel.value.category && channel.value.responsible[0] != '') {
+      loading.value = true;
+      const result = await api.post("/channel/create", channel.value);
+
+      if (result.data.uid) {
+        console.log(result.data);
+        router.push(`/channel/info/${result.data.uid}`);
+      }
+
+      loading.value = false;
+    }
+  } catch (error) {
+    loading.value = false;
+    console.error(error);
+    alert("An error occurred during creation channel");
+  }
+}
 </script>

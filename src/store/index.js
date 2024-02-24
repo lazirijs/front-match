@@ -2,14 +2,14 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    logged: false
+    logged: false,
+    team: null
   },
   getters: {
   },
   mutations: {
-    logged(state, payload) {
-      state.logged = payload;
-    }
+    logged: (state, payload) => state.logged = payload,
+    team: (state, payload) => state.team = payload,
   },
   actions: {
   },
