@@ -11,7 +11,7 @@
     <div class="grid gap-8">
       <input-app :value="channel.name" icon="ic:round-tv" readonly />
       <input-app :value="channel.category" icon="tabler:category-2" readonly />
-      <div v-if="$store.state.logged && $store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
+      <div v-if="$store.state.logged || $store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
         <input-app :value="responsible.name" icon="fluent:person-24-filled" readonly />
         <h6 @click="copy(responsible.code)" class="text-gray-400 text-start px-2 uppercase font-medium">CODE : {{ responsible.code }}</h6>
       </div>
