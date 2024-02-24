@@ -1,6 +1,5 @@
 <template>
-  <div v-if="loading" class="h-full flex-center">Loading...</div>
-  <div v-else class="grid gap-8 py-6">
+  <div class="grid gap-8 py-6">
     <div class="flex-between font-bold">
       <h1>Channels</h1>
       <icon-app @click="$router.push('/channel/new')"  icon="mingcute:plus-fill" class="w-9 cursor-pointer" />
@@ -16,7 +15,7 @@
       </div>
     </div>
     <h6 v-else>
-      {{ channels.length ? `no channel by the name of "${search}"` : 'no channels to display'}}
+      {{ loading ? "Loading..." : (channels.length ? `no channel by the name of "${search}"` : 'no channels to display')}}
     </h6>
   </div>
 </template>

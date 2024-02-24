@@ -1,20 +1,19 @@
 <template>
-  <div v-if="loading" class="h-full flex-center">Loading...</div>
-  <div v-else class="grid gap-20 py-6">
+  <div class="grid gap-20 py-6">
     <div class="flex-between font-bold">
       <div class="space-y-2">
         <h1>Channel info</h1>
-        <h6 class="text-gray-400 text-start">ID : {{ channel.id }}</h6>
+        <h6 class="text-gray-400 text-start">{{ loading ? "Loading..." : "ID : " + channel.id }}</h6>
       </div>
-      <icon-app @click="copyUrl()" icon="fa-solid:link" class="w-9 cursor-pointer" />
+      <icon-app @click="copy()" icon="fa-solid:link" class="w-9 cursor-pointer" />
     </div>
     
     <div class="grid gap-8">
       <input-app :value="channel.name" icon="ic:round-tv" readonly />
       <input-app :value="channel.category" icon="tabler:category-2" readonly />
-      <div v-if="$store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
+      <div v-if="$store.state.logged && $store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
         <input-app :value="responsible.name" icon="fluent:person-24-filled" readonly />
-        <h6 class="text-gray-400 text-start px-2 uppercase font-medium">CODE : {{ responsible.code }}</h6>
+        <h6 @click="copy(responsible.code)" class="text-gray-400 text-start px-2 uppercase font-medium">CODE : {{ responsible.code }}</h6>
       </div>
         <div class="grid grid-cols-4 gap-4">
           <div class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.ar }">Ar</div>
@@ -32,6 +31,8 @@
         <a @click="login()" class="link">click here</a> to edite team
       </h6>
     </div>
+
+    <h6 v-if="$store.state.logged" @click="!removing ? remove(channel.uid) : ''" class="text-red-300">{{ removing ? 'deleting channel...' : 'delete channel' }}</h6>
   </div>
 </template>
 
@@ -40,12 +41,24 @@ import { ref, onMounted } from 'vue'
 import { api } from '@/plugins/axios.js';
 import { useRoute } from 'vue-router'
 import store from '@/store';
+import router from '@/router';
 
 const route = useRoute();
 
-let channel = ref({});
+let channel = ref({
+  name: 'name',
+  category: 'category',
+  responsible: [],
+  languages: {
+    ar: false,
+    amz: false,
+    en: false,
+    fr: false,
+  }
+});
 
 let loading = ref(true);
+let removing = ref(false);
 
 onMounted(async (uid = route.params.uid) => {
   try {
@@ -69,5 +82,21 @@ const login = () => {
   }
 };
 
-const copyUrl = () => navigator.clipboard.writeText(window.location.href);
+const copy = (url = window.location.href) => navigator.clipboard.writeText(url);
+
+const remove = async (uid) => {
+  const code = prompt('Enter the Admin password : ');
+  if (code) {
+    try {
+      removing.value = true;
+      const result = await api.delete('/channel/remove/' + uid);
+      if (result.data) {
+        router.push('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    removing.value = false;
+  }
+};
 </script>
