@@ -11,10 +11,10 @@
       </div>
       <div class="space-y-2">
         <div class="grid grid-cols-4 gap-4">
-          <div @click="loading ? '' : channel.languages.ar = !channel.languages.ar" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.ar }">Ar</div>
-          <div @click="loading ? '' : channel.languages.amz = !channel.languages.amz" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.amz }">Amz</div>
-          <div @click="loading ? '' : channel.languages.en = !channel.languages.en" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.en }">En</div>
-          <div @click="loading ? '' : channel.languages.fr = !channel.languages.fr" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.fr }">Fr</div>
+          <div @click="loading ? '' : channel.languages.ar = !channel.languages.ar" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth cursor-pointer" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.ar }">Ar</div>
+          <div @click="loading ? '' : channel.languages.amz = !channel.languages.amz" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth cursor-pointer" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.amz }">Amz</div>
+          <div @click="loading ? '' : channel.languages.en = !channel.languages.en" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth cursor-pointer" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.en }">En</div>
+          <div @click="loading ? '' : channel.languages.fr = !channel.languages.fr" class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth cursor-pointer" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.fr }">Fr</div>
         </div>
         <h6 class="text-gray-400 text-start first-letter:lowercase px-2">click to select channel languages</h6>
         <button @click="create()" class="hidden"/>
