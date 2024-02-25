@@ -7,7 +7,7 @@
       <input-app :value="channel.category" @update="channel.category = $event" icon="tabler:category-2" placeholder="channel category" :readonly="loading" />
       <div class="space-y-2 overflow-y-auto">
         <input-app v-for="(item, index) in channel.responsible" :key="index" :value="channel.responsible[index]" @update="channel.responsible[index] = $event" icon="fluent:person-24-filled" placeholder="channel responsible" :readonly="loading" />
-        <h6 class="text-gray-400 text-start first-letter:lowercase px-2"><a @click="channel.responsible.push('')" class="underline">click here</a> to add another responsible</h6>
+        <h6 class="text-gray-400 text-start first-letter:lowercase px-2"><a @click="channel.responsible.push('')" class="underline cursor-pointer">click here</a> to add another responsible</h6>
       </div>
       <div class="space-y-2">
         <div class="grid grid-cols-4 gap-4">
