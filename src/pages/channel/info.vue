@@ -13,7 +13,7 @@
       <input-app :value="channel.category" icon="tabler:category-2" readonly />
       <div v-if="$store.state.logged || $store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
         <input-app :value="responsible.name" icon="fluent:person-24-filled" readonly />
-        <h6 @click="copy(responsible.code)" class="text-gray-400 text-start px-2 uppercase font-medium">CODE : {{ responsible.code }}</h6>
+        <h6 @click="copy(responsible.code)" title="Click to copy the code" class="text-gray-400 text-start px-2 uppercase font-medium cursor-pointer">CODE : {{ responsible.code }}</h6>
       </div>
         <div class="grid grid-cols-4 gap-4">
           <div class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.ar }">Ar</div>
