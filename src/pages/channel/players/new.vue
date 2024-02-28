@@ -18,6 +18,7 @@
       <input-app :value="player.birthday" @update="player.birthday = $event" icon="mdi:date-range" type="date" :readonly="loading" />
       <input-app :value="player.solarImageLink" @update="player.solarImageLink = link($event)" icon="mdi:person-box" type="url" placeholder="رابط الصورة الشمسية" :readonly="loading" />
       <input-app :value="player.birthCertificateLink" @update="player.birthCertificateLink = link($event)" icon="fluent:certificate-24-filled" placeholder="رابط شهادة الميلاد" :readonly="loading" />
+      <h6 class="text-gray-400 first-letter:lowercase">تأكد من أن إعدادات الخصوصية لهذه الصورة "عامة"</h6>
       <button @click="create()" class="hidden"/>
     </form>
 
