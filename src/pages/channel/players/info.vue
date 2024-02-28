@@ -1,7 +1,7 @@
 <template>
-  <div v-if="loading || !player.uid" class="h-full flex-center">{{ loading ? 'Loading...' : "this player does'nt exists" }}</div>
+  <div v-if="loading || !player.uid" class="h-full flex-center">{{ loading ? 'التحميل...' : "هذا اللاعب غير موجود" }}</div>
   <div v-else class="grid gap-16 py-6">
-    <h1 class="font-bold text-start">Player info</h1>
+    <h1 class="font-bold text-start">معلومات اللاعب</h1>
 
     <div class="grid gap-4">
       <div class="w-full h-24 flex-between gap-4">
@@ -10,7 +10,7 @@
       </div>
 
       <h6 class="text-gray-400 first-letter:lowercase">
-        click on the image to open it
+        انقر على الصورة لفتحها
       </h6>
     </div>
 
@@ -23,9 +23,9 @@
     </form>
 
     <h6 class="w-8/12 m-auto text-gray-400 first-letter:lowercase">
-        player added at : {{ $toDate(player.created_at, 'timestamp') }}
+        تمت إضافة اللاعب في : {{ $toDate(player.created_at, 'timestamp') }}
         <br>
-        you can't edit player info after added it
+        لا يمكنك تعديل معلومات اللاعب بعد إضافته
       </h6>
   </div>
 </template>
