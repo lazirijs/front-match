@@ -16,7 +16,7 @@
       placeholder="لاعبو الفريق" />
     </div>
     <div v-if="playersFilter.length && !loading">
-      <h6 class="text-gray-400 text-start mb-4">{{ playersFilter.length }} العدد</h6>
+      <h6 class="text-gray-400 text-start mb-4">العدد {{ playersFilter.length }}</h6>
       <div class="grid gap-4 overflow-y-auto">
         <div v-for="player in playersFilter" :key="player" class="w-full h-16 flex-between bg-v rounded-v gap-[0.375rem] sm:gap-2 md:gap-3 px-4 py-2 smooth">
           <router-link :to="`/channel/player/${player.uid}`" class="flex-center gap-4">
