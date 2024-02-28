@@ -2,8 +2,8 @@
   <div class="grid gap-20 py-6">
     <div class="flex-between font-bold">
       <div class="space-y-2">
-        <h1>Channel info</h1>
-        <h6 class="text-gray-400 text-start">{{ loading ? "Loading..." : "ID : " + channel.id }}</h6>
+        <h1>معلومات القناة</h1>
+        <h6 class="text-gray-400 text-start">{{ loading ? "التحميل..." : "ID : " + channel.id }}</h6>
       </div>
       <icon-app @click="copy()" icon="fa-solid:link" class="w-9 cursor-pointer" />
     </div>
@@ -13,7 +13,7 @@
       <input-app :value="channel.category" icon="tabler:category-2" readonly />
       <div v-if="$store.state.logged || $store.state.team == route.params.uid" v-for="(responsible, index) in channel.responsible" :key="index" class="space-y-2">
         <input-app :value="responsible.name" icon="fluent:person-24-filled" readonly />
-        <h6 @click="copy(responsible.code)" title="Click to copy the code" class="text-gray-400 text-start px-2 uppercase font-medium cursor-pointer">CODE : {{ responsible.code }}</h6>
+        <h6 @click="copy(responsible.code)" title="انقر لنسخ الرمز" class="text-gray-400 text-start px-2 uppercase font-medium cursor-pointer">CODE : {{ responsible.code }}</h6>
       </div>
         <div class="grid grid-cols-4 gap-4">
           <div class="w-full h-12 border-2 border-solid border-gray-300 text-gray-500 rounded-v flex-center smooth" :class="{ 'bg-gray-200 text-gray-700' : channel.languages.ar }">Ar</div>
@@ -26,13 +26,19 @@
     <div class="space-y-4">
       <btn-app text="team" @click="$router.push(`/channel/team/${channel.uid}`)" icon="fluent:people-team-16-filled" class="min-w-fit mt-4 mx-auto" />
       <h6 class="text-gray-400 first-letter:lowercase">
-        channel created at : {{ $toDate(channel.created_at, "timestamp") }} <br>
+        تم إنشاء القناة في : {{ $toDate(channel.created_at, "timestamp") }} <br>
         <br>
-        <a @click="login()" class="link">click here</a> to edite team
+        <a @click="login()" class="link">click here</a>للتعديل على الفريق
       </h6>
     </div>
 
-    <h6 v-if="$store.state.logged" @click="!removing ? remove(channel.uid) : ''" class="text-red-300">{{ removing ? 'deleting channel...' : 'delete channel' }}</h6>
+    <h6 v-if="$store.state.logged" @click="!removing ? remove(channel.uid) : ''" class="text-red-300 cursor-pointer">
+      {{ 
+        removing ? 
+          'حذف القناة...': 
+          'حذف القناة' 
+      }}
+    </h6>
   </div>
 </template>
 
@@ -63,7 +69,7 @@ let removing = ref(false);
 onMounted(async (uid = route.params.uid) => {
   try {
     const result = await api.get('/channel/get/' + uid);
-    result.data.exists ? channel.value = result.data.data : alert("this channel does'nt exists");
+    result.data.exists ? channel.value = result.data.data : alert("هذه القناة غير موجودة");
   } catch (error) {
     console.log(error);
   }
@@ -71,13 +77,13 @@ onMounted(async (uid = route.params.uid) => {
 });
 
 const login = () => {
-  const code = prompt('Enter the password : ');
+  const code = prompt('أدخل كلمة مرور الفريق :');
   if (code) {
     const responsible = channel.value.responsible.map(i => i.code == code.toUpperCase()).includes(true);
     if (responsible) {
       store.commit('team', channel.value.uid);
     } else {
-      alert('your password is incorrect');
+      alert('كلمة مرورك غير صحيحة');
     }
   }
 };
@@ -85,7 +91,7 @@ const login = () => {
 const copy = (url = window.location.href) => navigator.clipboard.writeText(url);
 
 const remove = async (uid) => {
-  const code = prompt('Enter the Admin password : ');
+  const code = prompt('أدخل كلمة المرور :');
   if (code) {
     try {
       removing.value = true;
