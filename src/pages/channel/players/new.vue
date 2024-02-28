@@ -51,7 +51,7 @@ const player = ref({
 
 const create = async () => {
   try {
-    if (player.value.fullname && player.value.birthday && player.value.solarImageLink && player.value.birthCertificateLink) {
+    if (player.value.fullname && player.value.birthday && player.value.solarImageLink && player.value.birthCertificateLink && window.confirm()) {
       loading.value = true;
       const result = await api.post("/channel/add/player", player.value);
       router.push('/channel/player/' + result.data.uid);
