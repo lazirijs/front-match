@@ -6,7 +6,7 @@
     </div>
     <input-app :value="search" @update="search = $event" icon="iconamoon:search-fill" type="search" placeholder="البحث" />
     <div v-if="channelsFilter.length">
-      <h6 class="text-gray-400 text-start mb-4">{{channelsFilter.length}} عدد</h6>
+      <h6 class="text-gray-400 text-start mb-4">العدد {{channelsFilter.length}}</h6>
       <div class="grid gap-4 overflow-y-auto">
         <router-link v-for="(channel, index) in channelsFilter" :key="channel" :to="`/channel/info/${channel.uid}`"
           class="w-full h-12 flex items-center bg-v rounded-v gap-[0.375rem] sm:gap-2 md:gap-3 px-4 py-2 smooth cursor-pointer hover:bg-gray-300">
