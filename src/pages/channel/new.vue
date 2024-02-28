@@ -54,7 +54,7 @@ const channel = ref({
 
 const create = async () => {
   try {
-    if (channel.value.name && channel.value.category && channel.value.responsible[0] != '') {
+    if (channel.value.name && channel.value.category && channel.value.responsible[0] != '' && window.confirm()) {
       loading.value = true;
       const result = await api.post("/channel/create", channel.value);
 
