@@ -1,8 +1,8 @@
 <template>
   <div class="grid gap-8 py-6">
     <div class="flex-between font-bold">
-      <icon-app @click="$router.push('/channel/new')"  icon="mingcute:plus-fill" class="w-9 cursor-pointer" />
       <h1>القنوات</h1>
+      <icon-app @click="$router.push('/channel/new')"  icon="mingcute:plus-fill" class="w-9 cursor-pointer" />
     </div>
     <input-app :value="search" @update="search = $event" icon="iconamoon:search-fill" type="search" placeholder="البحث" />
     <div v-if="channelsFilter.length">
