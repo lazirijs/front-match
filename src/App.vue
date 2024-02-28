@@ -2,7 +2,7 @@
   <div v-if="!payed" class="flex-center h-full">
     نهار تخلصنا فعرقنا نرجعولك السيت
   </div>
-  <router-view v-else class="md:w-6/12 mx-auto" />
+  <router-view v-else dir="rtl" class="md:w-6/12 mx-auto" />
 </template>
 
 <script setup>
