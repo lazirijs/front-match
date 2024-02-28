@@ -24,7 +24,7 @@
     </div>
 
     <div class="space-y-4">
-      <btn-app text="team" @click="$router.push(`/channel/team/${channel.uid}`)" icon="fluent:people-team-16-filled" class="min-w-fit mt-4 mx-auto" />
+      <btn-app text="الفريق" @click="$router.push(`/channel/team/${channel.uid}`)" icon="fluent:people-team-16-filled" class="min-w-fit mt-4 mx-auto" />
       <h6 class="text-gray-400 first-letter:lowercase">
         تم إنشاء القناة في : {{ $toDate(channel.created_at, "timestamp") }} <br>
         <br>
