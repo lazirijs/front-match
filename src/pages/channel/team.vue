@@ -2,8 +2,8 @@
   <div class="grid gap-8 py-6">
     <div class="flex-between font-bold">
       <div class="space-y-2">
-        <h1>{{ channel.name || "Channel" }}</h1>
-        <h6 class="text-gray-400 text-start">{{ channel.category || "category" }}</h6>
+        <h1>{{ channel.name || "قناة" }}</h1>
+        <h6 class="text-gray-400 text-start">{{ channel.category || "الفئة" }}</h6>
       </div>
       <icon-app @click="$router.push('/channel/info/' + $route.params.uid)" icon="entypo:info" class="w-9 cursor-pointer" />
     </div>
@@ -13,10 +13,10 @@
         <icon-app @click="add" icon="fa6-solid:plus" class="w-9 cursor-pointer" />
       </router-link>
     <input-app :value="search" @update="search = $event" icon="iconamoon:search-fill" type="search"
-      placeholder="Team players" />
+      placeholder="لاعبو الفريق" />
     </div>
     <div v-if="playersFilter.length && !loading">
-      <h6 class="text-gray-400 text-start mb-4">{{ playersFilter.length }} count</h6>
+      <h6 class="text-gray-400 text-start mb-4">{{ playersFilter.length }} العدد</h6>
       <div class="grid gap-4 overflow-y-auto">
         <div v-for="player in playersFilter" :key="player" class="w-full h-16 flex-between bg-v rounded-v gap-[0.375rem] sm:gap-2 md:gap-3 px-4 py-2 smooth">
           <router-link :to="`/channel/player/${player.uid}`" class="flex-center gap-4">
@@ -28,10 +28,10 @@
       </div>
     </div>
     <h6 v-else>
-      {{ loading ? 'loading...' : (players.length ? `no players by the name of "${search}"` : 'no players to display') }}
+      {{ loading ? 'التحميل...' : (players.length ? `لا يوجد لاعبين بالاسم "${search}"` : 'لا يوجد لاعبين لعرضهم') }}
     </h6>
     <h6 v-if="!loading && players.length" class="text-gray-400 text-center"> 
-      last added player at <br> 
+      آخر لاعب تمت إضافته في <br> 
       {{ $toDate(players[0].created_at, 'timestamp') }}
     </h6>
   </div>
@@ -85,11 +85,11 @@ const remove = async (player) => {
 };
 
 const login = (player) => {
-  const code = prompt('Enter the password : ');
+  const code = prompt('أدخل كلمة مرور الفريق : ');
   if (code) {
     const responsible = channel.value.responsible.map(i => i.code == code.toUpperCase()).includes(true);
     if (!responsible) {
-      alert('your password is incorrect');
+      alert('كلمة مرورك غير صحيحة');
     } else {
       remove(player);
     }
