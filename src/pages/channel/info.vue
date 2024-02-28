@@ -28,7 +28,7 @@
       <h6 class="text-gray-400 first-letter:lowercase">
         تم إنشاء القناة في : {{ $toDate(channel.created_at, "timestamp") }} <br>
         <br>
-        <a v-if="$store.state.team" @click="login()" class="link">انقر هنا </a>للتعديل على الفريق
+        <a v-if="$store.state.team"><a @click="login()" class="link">انقر هنا </a>للتعديل على الفريق</a>
       </h6>
     </div>
 
