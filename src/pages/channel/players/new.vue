@@ -1,6 +1,6 @@
 <template>
   <div class="grid gap-16 py-6">
-    <h1 class="font-bold text-start">New Player</h1>
+    <h1 class="font-bold text-start">لاعب جديد</h1>
 
     <div class="grid gap-4">
       <div class="w-full h-24 flex-between gap-4">
@@ -9,22 +9,22 @@
       </div>
 
       <h6 class="text-gray-400 first-letter:lowercase">
-        click on the image to open it
+        انقر على الصورة لفتحها
       </h6>
     </div>
 
     <form @submit.prevent="submitForm" class="grid gap-8">
-      <input-app :value="player.fullname" @update="player.fullname = $event" icon="fluent:person-24-filled" placeholder="player full fullname" :readonly="loading" />
+      <input-app :value="player.fullname" @update="player.fullname = $event" icon="fluent:person-24-filled" placeholder="اسم اللاعب الكامل" :readonly="loading" />
       <input-app :value="player.birthday" @update="player.birthday = $event" icon="mdi:date-range" type="date" :readonly="loading" />
-      <input-app :value="player.solarImageLink" @update="player.solarImageLink = link($event)" icon="mdi:person-box" type="url" placeholder="solar image link" :readonly="loading" />
-      <input-app :value="player.birthCertificateLink" @update="player.birthCertificateLink = link($event)" icon="fluent:certificate-24-filled" placeholder="birth certificate link" :readonly="loading" />
+      <input-app :value="player.solarImageLink" @update="player.solarImageLink = link($event)" icon="mdi:person-box" type="url" placeholder="رابط الصورة الشمسية" :readonly="loading" />
+      <input-app :value="player.birthCertificateLink" @update="player.birthCertificateLink = link($event)" icon="fluent:certificate-24-filled" placeholder="رابط شهادة الميلاد" :readonly="loading" />
       <button @click="create()" class="hidden"/>
     </form>
 
     <div class="space-y-4">
       <btn-app text="create" @click="create()" icon="entypo:plus" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
       <h6 class="w-5/12 m-auto text-gray-400 first-letter:lowercase">
-        you can't edit player info after creating it
+        لا يمكنك تعديل معلومات اللاعب بعد إضافته
       </h6>
     </div>
   </div>
@@ -60,7 +60,7 @@ const create = async () => {
   } catch (error) {
     loading.value = false;
     console.error(error);
-    alert("An error occurred during creation channel");
+    alert("حدث خطأ أثناء إنشاء القناة");
   }
 }
 
