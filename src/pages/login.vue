@@ -9,7 +9,7 @@
         <h6 class="text-gray-400 text-start mt-2">أدخل كلمة المرور</h6>
         <button @click="login()" class="hidden"/>
       </form>
-      <btn-app text="enter" @click="login" icon="basil:login-solid" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
+      <btn-app text="الدخول" @click="login" icon="basil:login-solid" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
       <h6 class="w-8/12 m-auto text-gray-400">يجب عليك تسجيل الدخول مرة أخرى في كل مرة تقوم فيها بإعادة تحميل الصفحة</h6>
     </div>
     <h6 class="w-8/12 text-center text-gray-400">webapp created by <a href="https://facebook.com/lazirijs" target="_blank" class="font-bold">Laziri</a></h6>
