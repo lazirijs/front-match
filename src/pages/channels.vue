@@ -1,10 +1,10 @@
 <template>
   <div class="grid gap-8 py-6">
     <div class="flex-between font-bold">
-      <h1>Channels</h1>
       <icon-app @click="$router.push('/channel/new')"  icon="mingcute:plus-fill" class="w-9 cursor-pointer" />
+      <h1>القنوات</h1>
     </div>
-    <input-app :value="search" @update="search = $event" icon="iconamoon:search-fill" type="search" placeholder="search" />
+    <input-app :value="search" @update="search = $event" icon="iconamoon:search-fill" type="البحث" placeholder="search" />
     <div v-if="channelsFilter.length">
       <h6 class="text-gray-400 text-start mb-4">{{channelsFilter.length}} count</h6>
       <div class="grid gap-4 overflow-y-auto">
