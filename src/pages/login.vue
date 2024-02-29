@@ -37,7 +37,7 @@ const login = async () => {
 
       if (result.data) {
         store.commit("logged", true);
-        router.push('/');
+        router.push('/channel/new');
       } else {
         alert("كلمة مرورك غير صحيحة");
       }
