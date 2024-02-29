@@ -57,6 +57,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const logged = store.state.logged;
   const team = store.state.team;
+  console.log(to);
   if (logged || (to.meta.auth == "requiredTeam" && team == to.paramse.uid)) {
     next();
   } else if (to.meta.auth == "requiredTeam" && !team) {
