@@ -22,11 +22,13 @@ const routes = [
   {
     path: '/channel/info/:uid',
     name: 'info channel',
+    meta: { auth: "requiredTeam" },
     component: () => import('../pages/channel/info.vue')
   },
   {
     path: '/channel/team/:uid',
     name: 'team channel',
+    meta: { auth: "requiredTeam" },
     component: () => import('../pages/channel/team.vue')
   },
   {
@@ -38,6 +40,7 @@ const routes = [
   {
     path: '/channel/player/:uid',
     name: 'player info',
+    meta: { auth: "requiredTeam" },
     component: () => import('../pages/channel/players/info.vue')
   },
   {
