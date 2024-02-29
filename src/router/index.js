@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
   const logged = store.state.logged;
   const team = store.state.team;
   console.log(to);
-  if (logged || (to.meta.auth == "requiredTeam" && team == to.paramse.uid)) {
+  if (logged || (to.meta.auth == "requiredTeam" && team == to.params.uid)) {
     next();
   } else if (to.meta.auth == "requiredTeam" && !team) {
     next({ path: "/" });
