@@ -22,7 +22,6 @@ const routes = [
   {
     path: '/channel/info/:uid',
     name: 'info channel',
-    meta: { auth: "requiredTeam" },
     component: () => import('../pages/channel/info.vue')
   },
   {
