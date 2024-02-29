@@ -23,7 +23,7 @@
     </form>
 
     <div class="space-y-4">
-      <btn-app text="create" @click="create()" icon="entypo:plus" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
+      <btn-app text="إضافة" @click="create()" icon="entypo:plus" :loading="loading" dark class="min-w-fit mt-4 mx-auto" />
       <h6 class="w-5/12 m-auto text-gray-400 first-letter:lowercase">
         لا يمكنك تعديل معلومات اللاعب بعد إضافته
       </h6>
