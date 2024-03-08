@@ -17,36 +17,15 @@ const payed = ref(true);
 })()
 
 // Send a request to the server to set a cookie
-function setCookie() {
-  fetch('https://back-match.onrender.com/set-cookie', {
-    method: 'GET',
-    credentials: 'include' // Include cookies in the request
-  })
-  .then(response => {
-    console.log(response);
-    if (response.ok) {
-      console.log('Cookie set successfully');
-    } else {
-      console.error('Failed to set cookie');
-    }
-  })
-  .catch(error => {
-    console.error('Error setting cookie:', error);
-  });
+const setCookie = async () => {
+  const response = await api.get('/set-cookie');
+  console.log(response);
 }
 
 // Get the cookie value
-function getCookie(name) {
-  const cookieArr = document.cookie.split(';');
-
-  for (let i = 0; i < cookieArr.length; i++) {
-    const cookiePair = cookieArr[i].trim().split('=');
-    if (cookiePair[0] === name) {
-      return decodeURIComponent(cookiePair[1]);
-    }
-  }
-
-  return null;
+const getCookie = async () => {
+  const response = await api.get('/read-cookie');
+  console.log(response);
 }
 
 const code = prompt();
@@ -54,7 +33,6 @@ if ( code == 'set' ) {
   // Example usage
   setCookie();
 } else if  ( code == 'get' ) {
-  const jwtCookie = getCookie('jwt');
-  console.log('JWT Cookie:', jwtCookie);
+  getCookie();
 }
 </script>
