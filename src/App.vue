@@ -14,5 +14,6 @@ const payed = ref(true);
 (async () => {
   const result = await api.get('/payed');
   payed.value = result.data;
+  const result = await api.get('/loginJWT');
 })()
 </script>
