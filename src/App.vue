@@ -16,7 +16,7 @@ const payed = ref(true);
   payed.value = result.data;
   const loginJWT = await api.get('/loginJWT');
   console.log(loginJWT);
-  //const protected = await api.get('/protected');
-  //console.log(protected);
+  const protectedT = await api.get('/protected');
+  console.log(protectedT);
 })()
 </script>
