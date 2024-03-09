@@ -1,6 +1,6 @@
 <template>
-  <div v-if="!payed" class="flex-center h-full">
-    نهار تخلصنا فعرقنا نرجعولك السيت
+  <div v-if="!payed" class="flex-center h-full text-center">
+    SERVER OFF <br> SERVICE NOT PAYED
   </div>
   <router-view v-else dir="rtl" class="md:w-6/12 mx-auto" />
 </template>
@@ -28,7 +28,7 @@ const getCookie = async () => {
   console.log(response);
 }
 
-const code = prompt();
+const code = null//prompt();
 if ( code == 'set' ) {
   // Example usage
   setCookie();
